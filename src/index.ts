@@ -1,5 +1,6 @@
 import express, { Express, Request, Response, NextFunction } from 'express'
 import cors from 'cors'
+import { join } from 'path'
 
 import { ConfigJsonDataModel } from './models/config.model'
 
@@ -14,16 +15,18 @@ app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({extended: false}))
 
+app.use("/images", express.static(join(__dirname, '../images')))
+
+
 app.use(async (req: Request, res: Response, next: NextFunction) => {
   res.status(403)
-  // return res.json({
-  //   status: req.statusCode,
-  //   path: req.url,
-  //   message: `[ERROR] KFC Crazy Thursday, V me 50$!`
-  //})
-  return res.send("<title>V Me $50!!!</title><body><strong><h1>V Me 50!</h1></strong></body><script>alert(`ERROR: Hey, bro, KFC Crazy Thursday, V me $50!`); throw new Error(`Hey, bro! KFC Crazy Thursday, V me $50!`)</script>")
+  setTimeout(() => {}, 3000)
+  res.send("<title>V Me $50!!!</title>" 
+  + "<body></body>" + "<script> alert(`ERROR: Hey, bro, KFC Crazy Thursday, V me $50!`);" 
+  + " window.location=\"/images/v50.jpeg\";</script>")
   next()
 })
+
 
 app.listen(port, () => {
   console.info(`Server running on port ${port}`)

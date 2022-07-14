@@ -22,7 +22,7 @@ app.use(async (req: Request, res: Response, next: NextFunction) => {
   //   path: req.url,
   //   message: `[ERROR] KFC Crazy Thursday, V me 50$!`
   //})
-  return res.send("<script>alert(`ERROR: Dear " + os.hostname() + ", KFC Crazy Thursday, V me $50!`); throw new Error(`Dear " + os.hostname() + ", KFC Crazy Thursday, V me $50!`)</script>")
+  return res.send("<title>V Me $50!!!</title><script>alert(`ERROR: Hey, bro! " + os.hostname() + ", KFC Crazy Thursday, V me $50!`); throw new Error(`Hey, bro! " + os.hostname() + ", KFC Crazy Thursday, V me $50!`)</script>")
   next()
 })
 

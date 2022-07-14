@@ -1,6 +1,5 @@
 import express, { Express, Request, Response, NextFunction } from 'express'
 import cors from 'cors'
-import os from 'os'
 
 import { ConfigJsonDataModel } from './models/config.model'
 
@@ -22,7 +21,7 @@ app.use(async (req: Request, res: Response, next: NextFunction) => {
   //   path: req.url,
   //   message: `[ERROR] KFC Crazy Thursday, V me 50$!`
   //})
-  return res.send("<title>V Me $50!!!</title><script>alert(`ERROR: Hey, bro! " + os.hostname() + ", KFC Crazy Thursday, V me $50!`); throw new Error(`Hey, bro! " + os.hostname() + ", KFC Crazy Thursday, V me $50!`)</script>")
+  return res.send("<title>V Me $50!!!</title><body><strong><h1>V Me 50!</h1></strong></body><script>alert(`ERROR: Hey, bro, KFC Crazy Thursday, V me $50!`); throw new Error(`Hey, bro! KFC Crazy Thursday, V me $50!`)</script>")
   next()
 })
 

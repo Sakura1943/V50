@@ -15,17 +15,11 @@ app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({extended: false}))
 
+app.use("/public", express.static(join(__dirname, '../public')))
+
 app.use("/images", express.static(join(__dirname, '../images')))
 
-
-app.use(async (req: Request, res: Response, next: NextFunction) => {
-  res.status(403)
-  setTimeout(() => {}, 3000)
-  res.send("<title>V Me $50!!!</title>" 
-  + "<body></body>" + "<script> alert(`ERROR: Hey, bro, KFC Crazy Thursday, V me $50!`);" 
-  + " window.location=\"/images/v50.jpeg\";</script>")
-  next()
-})
+app.use("/", express.static(join(__dirname, '../public')))
 
 
 app.listen(port, () => {
